@@ -1,0 +1,9 @@
+.intro_content{
+    font-size: 3vmin;
+    text-align: justify;
+}
+.content_TC{
+    height: 100%;
+    overflow-y: auto;
+    padding-bottom: 10px;
+}

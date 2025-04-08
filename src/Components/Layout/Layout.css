@@ -1,0 +1,54 @@
+.topnav a {
+    font-size: large;
+}
+
+.lay_body {
+    height: 88dvh;
+}
+
+.footer_body {
+    background-color: #333;
+    color: white;
+    font-size: 19px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.content_lay {
+   height: 100%;
+}
+
+.content_area {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.content_blank {
+    width: 100%;
+    height: 100%;
+}
+
+.thoitiet_widget {
+    border: none;
+    overflow: hidden;
+    height: 100%;
+}
+.content_row{
+    height: 100%;
+}
+.sidebar_area{
+    height: 100%;
+}
+.weather_area{
+    height: 50%;
+    border: 1px solid black;
+}
+.sidebar_content{
+    height: 47%;
+    overflow-y: auto;
+    margin-top: 10px;
+    border: 1px solid black;
+}

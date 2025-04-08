@@ -1,0 +1,14 @@
+.btn_chnang{
+    width: 100%;
+    height: 100%;
+}
+.btnLam{
+    display: flex;
+    float: left;
+    margin-left: 15%;
+}
+.btnVe{
+    display: flex;
+    float: right;
+    margin-right: 15%;
+}
