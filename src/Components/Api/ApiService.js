@@ -1,6 +1,6 @@
 import axios from 'axios';
 const connection = axios.create({
-    baseURL : 'http://127.0.0.1:8000',
+    baseURL : 'http://apiwebtnghiem.infy.uk',
     headers :{
         'Content-Type' : 'application/json'
     }
