@@ -8,29 +8,54 @@ function Layout() {
         alert("Đăng xuất thành công!");
         navigate('/');
         window.location.reload();
-        
+
     }
     return (
         <div>
             <nav className="topnav">
                 <Link to="/">Trang chủ</Link>
                 <Link to="/Gioithieu">Giới thiệu</Link>
-                <Link to="/Timkiem">Tìm kiếm</Link>
-                <Link to="/Dethi">Đề thi của tôi</Link>
-                <Link to="/Taode">Tạo đề</Link>
-                <Link to="/Thitheoma">Thi theo mã</Link>
-                <Link to="/Ketqua">Kết quả</Link>
                 {
                     sessionStorage.getItem('id') ?
-                    <Link to="/Thongtin">{sessionStorage.getItem('ten')}</Link>
-                    :
-                    <Link to="/Dangnhap">Đăng nhập</Link>
+                        <Link to="/Timkiem">Tìm kiếm</Link>
+                        :
+                        null
                 }
                 {
                     sessionStorage.getItem('id') ?
-                    <Link onClick={handleDX}>Đăng xuất</Link>
-                    :
-                    <Link to="/Dangky">Đăng ký</Link>
+                        <Link to="/Thitheoma">Thi theo mã</Link>
+                        :
+                        null
+                }
+                {
+                    sessionStorage.getItem('id') ?
+                        <Link to="/Ketqua">Kết quả</Link>
+                        :
+                        null
+                }
+                {
+                    sessionStorage.getItem('id') && sessionStorage.getItem('quyen') === '1' ?
+                        <Link to="/Dethi">Đề thi của tôi</Link>
+                        :
+                        null
+                }
+                {
+                    sessionStorage.getItem('id') && sessionStorage.getItem('quyen') === '1' ?
+                        <Link to="/Taode">Tạo đề</Link>
+                        :
+                        null
+                }
+                {
+                    sessionStorage.getItem('id') ?
+                        <Link to="/Thongtin">{sessionStorage.getItem('ten')}</Link>
+                        :
+                        <Link to="/Dangnhap">Đăng nhập</Link>
+                }
+                {
+                    sessionStorage.getItem('id') ?
+                        <Link onClick={handleDX}>Đăng xuất</Link>
+                        :
+                        <Link to="/Dangky">Đăng ký</Link>
                 }
             </nav>
             <div className="w-3/4 p-4 lay_body">
@@ -39,7 +64,7 @@ function Layout() {
                         <div className="row content_row">
                             <div className="col-lg-8 content_area">
                                 <Outlet />
-                            </div><br/>
+                            </div><br />
                             <div className="col-lg-4 sidebar_area">
                                 <div className="weather_area">
                                     <iframe src="https://thoitiet247.vn/widget/embed/ho-chi-minh?style=1&day=5&td=%23003870&ntd=%23ff0000&mvb=%23959dad&mv=%23ff0000&mdk=%23dddddd&htd=true"
@@ -51,7 +76,7 @@ function Layout() {
                                         className="thoitiet_widget"></iframe>
                                 </div>
                                 <div className="sidebar_content">
-                                    <BaiThi/>
+                                    <BaiThi />
                                 </div>
                             </div>
                         </div>

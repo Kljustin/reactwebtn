@@ -10,6 +10,7 @@ import TimKiem from './Components/TimKiem/TimKiem';
 import ChiTietBaiThi from './Components/ChiTietBaiThi/ChiTietBaiThi';
 import CacCauBaiThi from './Components/ChiTietBaiThi/CacCauBaiThi';
 import HienThiKetQua from './Components/KetQua/HienThiKetQua';
+import KetQua from './Components/KetQua/KetQua';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/Chitietbaithi" element={<ChiTietBaiThi />} />
             <Route path="/Loadbaithi" element={<CacCauBaiThi />} />
             <Route path="/Hienthiketqua" element={<HienThiKetQua />} />
+            <Route path="/Ketqua" element={<KetQua />} />
           </Route>
         </Routes>
       </Router>
