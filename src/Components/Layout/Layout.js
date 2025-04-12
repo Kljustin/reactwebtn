@@ -41,7 +41,7 @@ function Layout() {
                 }
                 {
                     sessionStorage.getItem('id') && sessionStorage.getItem('quyen') === '1' ?
-                        <Link to="/Taode">Tạo đề</Link>
+                        <Link to="/Theloai">Thể loại</Link>
                         :
                         null
                 }

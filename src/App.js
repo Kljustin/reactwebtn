@@ -11,6 +11,9 @@ import ChiTietBaiThi from './Components/ChiTietBaiThi/ChiTietBaiThi';
 import CacCauBaiThi from './Components/ChiTietBaiThi/CacCauBaiThi';
 import HienThiKetQua from './Components/KetQua/HienThiKetQua';
 import KetQua from './Components/KetQua/KetQua';
+import TaoDeThi from './Components/TaoDe/FormTaoDe';
+import TheLoai from './Components/TheLoai/TheLoai';
+import DeThiCuaToi from './Components/TaoDe/DeThiCuaToi';
 
 function App() {
   return (
@@ -26,6 +29,9 @@ function App() {
             <Route path="/Loadbaithi" element={<CacCauBaiThi />} />
             <Route path="/Hienthiketqua" element={<HienThiKetQua />} />
             <Route path="/Ketqua" element={<KetQua />} />
+            <Route path="/Taode" element={<TaoDeThi />} />
+            <Route path="/Theloai" element={<TheLoai />} />
+            <Route path="/Dethi" element={<DeThiCuaToi />} />
           </Route>
         </Routes>
       </Router>
