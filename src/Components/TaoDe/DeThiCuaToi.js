@@ -23,6 +23,16 @@ function DeThiCuaToi() {
     const handleThem = () => {
         navigate('/Taode');
     }
+    const handleChitiet = async (e) => {
+        try{
+            const response = await connection.get(`/Chitietchinhsua/${e}`);
+            const bthi = response.data;
+            navigate('/Chinhsua', {state : {bthi}});
+        }
+        catch{
+            alert('Bài thi không tồn tại!');
+        }
+    }
     return (
         <div style={{ textAlign: 'justify', fontSize: 'large' }}>
             <h1>Danh sách đề thi đã tạo</h1><br />
@@ -44,26 +54,26 @@ function DeThiCuaToi() {
                     {
                         baithi.map((item, index) => (
                             <tr key={index}>
-                                <td>{item.idbaithi}</td>
-                                <td>{item.tenbaithi}</td>
-                                <td>{item.ngayrade}</td>
-                                <td style={{ textAlign: 'center' }}>{item.soluongcau}</td>
-                                <td style={{ textAlign: 'center' }}>
+                                <td style={{ alignContent: 'center' }}>{item.idbaithi}</td>
+                                <td style={{ alignContent: 'center' }}>{item.tenbaithi}</td>
+                                <td style={{ alignContent: 'center' }}>{item.ngayrade}</td>
+                                <td style={{ alignContent: 'center', textAlign: 'center' }}>{item.soluongcau}</td>
+                                <td style={{ alignContent: 'center', textAlign: 'center' }}>
                                     {item.congkhai === 1 ?
-                                        <i className='bx bxs-check-circle' style={{ fontSize:'xx-large', color: '#37bf13' }}  ></i>
+                                        <i className='bx bxs-check-circle' style={{ fontSize: 'xx-large', color: '#37bf13' }}  ></i>
                                         :
-                                        <i className='bx bxs-x-circle' style={{ fontSize:'xx-large', color: '#ea0b0f' }}  ></i>}
+                                        <i className='bx bxs-x-circle' style={{ fontSize: 'xx-large', color: '#ea0b0f' }}  ></i>}
                                 </td>
-                                <td style={{ textAlign: 'center' }}>
+                                <td style={{ alignContent: 'center', textAlign: 'center' }}>
                                     {item.lamlai === 1 ?
-                                        <i className='bx bxs-check-circle' style={{ fontSize:'xx-large', color: '#37bf13' }}  ></i>
+                                        <i className='bx bxs-check-circle' style={{ fontSize: 'xx-large', color: '#37bf13' }}  ></i>
                                         :
-                                        <i className='bx bxs-x-circle' style={{ fontSize:'xx-large', color: '#ea0b0f' }}  ></i>}
+                                        <i className='bx bxs-x-circle' style={{ fontSize: 'xx-large', color: '#ea0b0f' }}  ></i>}
                                 </td>
-                                <td>{item.theloai}</td>
-                                <td style={{ textAlign:'center' }}>
-                                    <button className="btn btn-danger">Xóa</button><br/>
-                                    <button className="btn btn-primary">Sửa</button>
+                                <td style={{ alignContent: 'center' }}>{item.theloai}</td>
+                                <td style={{ alignContent: 'center', textAlign: 'center' }}>
+                                    <button className="btn btn-danger">Xóa</button><br />
+                                    <button className="btn btn-warning" onClick={()=>handleChitiet(item.idbaithi)}>Chi tiết</button>
                                 </td>
                             </tr>
                         ))

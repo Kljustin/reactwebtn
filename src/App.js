@@ -14,6 +14,8 @@ import KetQua from './Components/KetQua/KetQua';
 import TaoDeThi from './Components/TaoDe/FormTaoDe';
 import TheLoai from './Components/TheLoai/TheLoai';
 import DeThiCuaToi from './Components/TaoDe/DeThiCuaToi';
+import ChiTiet from './Components/ChiTietChinhSua/ChiTiet';
+import ThemChiTiet from './Components/ChiTietChinhSua/ThemChiTiet';
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
             <Route path="/Taode" element={<TaoDeThi />} />
             <Route path="/Theloai" element={<TheLoai />} />
             <Route path="/Dethi" element={<DeThiCuaToi />} />
+            <Route path="/Chinhsua" element={<ChiTiet />} />
+            <Route path="/Themchitiet" element={<ThemChiTiet />} />
           </Route>
         </Routes>
       </Router>
