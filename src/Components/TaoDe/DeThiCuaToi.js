@@ -72,7 +72,6 @@ function DeThiCuaToi() {
                                 </td>
                                 <td style={{ alignContent: 'center' }}>{item.theloai}</td>
                                 <td style={{ alignContent: 'center', textAlign: 'center' }}>
-                                    <button className="btn btn-danger">Xóa</button><br />
                                     <button className="btn btn-warning" onClick={()=>handleChitiet(item.idbaithi)}>Chi tiết</button>
                                 </td>
                             </tr>

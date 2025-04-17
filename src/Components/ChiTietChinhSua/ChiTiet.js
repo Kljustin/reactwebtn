@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import connection from "../Api/ApiService";
 
 function ChiTiet() {
     const location = useLocation();
@@ -6,17 +8,43 @@ function ChiTiet() {
     const baithi = bthi.Baithi;
     const chitiet = bthi.Chitiet;
     const navigate = useNavigate();
-    const handleBack = ()=>{
+    const [showmess, setShowmess] = useState(false);
+    const handleBack = () => {
         navigate(-1);
     }
-    const handleThemcauhoi = () =>{
+    const handleThemcauhoi = () => {
         const idbthi = baithi.idbaithi;
-        navigate('/Themchitiet', {state: {idbthi}});
+        navigate('/Themchitiet', { state: { idbthi } });
+    }
+    const handleXoa = async(e)=>{
+        try{
+            await connection.delete(`/Xoabaithi/${e}`);
+            navigate('/Dethi');
+        }
+        catch{
+            alert('Xóa thất bại, lỗi!');
+        }
     }
     return (
         <div style={{ textAlign: 'justify', fontSize: 'large' }}>
+            {
+                showmess && (
+                    <div style={{
+                        backgroundColor: 'white', position: 'fixed', top: '35%', left: '35%', right: '35%', bottom: '35%',
+                        zIndex: '100', padding: '30px', boxShadow:'0px 4px 10px black'
+                    }}>
+                        <div style={{ width: '100%', height: '100%', alignContent: 'center' }}>
+                            <h3 style={{ width: '100%' }}>Bạn có đồng ý?</h3>
+                            <div style={{ width: '100%', bottom: '0', paddingTop: '15px' }}>
+                                <button onClick={()=>setShowmess(false)} style={{ display: 'flex', float: 'left' }} className="btn btn-primary">Hủy</button>
+                                <button onClick={()=>handleXoa(baithi.idbaithi)} style={{ display: 'flex', float: 'right' }} className="btn btn-success">Ok</button>
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
             <button className="btn" onClick={handleBack}>
-                <i className='bx bx-left-arrow-circle' style={{ fontSize:'xx-large', scale:'1.3' }} ></i>
+                <i className='bx bx-left-arrow-circle' style={{ fontSize: 'xx-large', scale: '1.3' }} ></i>
             </button>
             <h1>Chi tiết bài thi</h1>
             <table className="table table-bordered table-striped">
@@ -63,12 +91,17 @@ function ChiTiet() {
             </table>
             <button style={{ fontSize: 'large' }} className="btn btn-primary form-control">
                 <i className='bx bx-edit' style={{ color: '#ffffff', fontSize: 'large' }}></i> Chỉnh sửa thông tin bài thi
+            </button><br /><br />
+            <button style={{ fontSize: 'large' }} className="btn btn-danger form-control"
+            onClick={()=>setShowmess(true)}>
+                <i className='bx bxs-minus-circle' style={{ color: '#ffffff', fontSize: 'large' }}></i> Xóa
             </button>
-            <br/><hr style={{border:'1px solid black' }}/>
+
+            <br /><hr style={{ border: '1px solid black' }} />
             <h1>Các câu hỏi</h1>
-            <button style={{ fontSize: 'large' }} 
-            className="btn btn-success"
-            onClick={handleThemcauhoi}>
+            <button style={{ fontSize: 'large' }}
+                className="btn btn-success"
+                onClick={handleThemcauhoi}>
                 <i className='bx bx-plus-circle' style={{ color: '#ffffff', fontSize: 'large' }}></i> Thêm câu hỏi
             </button>
             <br /><br />
