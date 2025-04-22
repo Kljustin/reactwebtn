@@ -17,6 +17,7 @@ import DeThiCuaToi from './Components/TaoDe/DeThiCuaToi';
 import ChiTiet from './Components/ChiTietChinhSua/ChiTiet';
 import ThemChiTiet from './Components/ChiTietChinhSua/ThemChiTiet';
 import TimKiemTheoMa from './Components/TimKiem/TimKiemTheoMa';
+import ChinhSuaForm from './Components/ChiTietChinhSua/ChinhSuaForm';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
             <Route path="/Chinhsua" element={<ChiTiet />} />
             <Route path="/Themchitiet" element={<ThemChiTiet />} />
             <Route path="/Thitheoma" element={<TimKiemTheoMa />} />
+            <Route path="/Chinhsuadethi" element={<ChinhSuaForm />} />
           </Route>
         </Routes>
       </Router>

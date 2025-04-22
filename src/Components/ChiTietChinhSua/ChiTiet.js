@@ -25,6 +25,16 @@ function ChiTiet() {
             alert('Xóa thất bại, lỗi!');
         }
     }
+    const handleChinhsua = async () => {
+        try{
+            const response = await connection.get(`/CTBaithi/${baithi.idbaithi}`);
+            const btcs = response.data;
+            navigate('/Chinhsuadethi', {state:{btcs}});
+        }
+        catch{
+            alert('Bài thi không tồn tại!');
+        }
+    }
     return (
         <div style={{ textAlign: 'justify', fontSize: 'large' }}>
             {
@@ -89,7 +99,7 @@ function ChiTiet() {
                     </tr>
                 </tbody>
             </table>
-            <button style={{ fontSize: 'large' }} className="btn btn-primary form-control">
+            <button style={{ fontSize: 'large' }} className="btn btn-primary form-control" onClick={handleChinhsua}>
                 <i className='bx bx-edit' style={{ color: '#ffffff', fontSize: 'large' }}></i> Chỉnh sửa thông tin bài thi
             </button><br /><br />
             <button style={{ fontSize: 'large' }} className="btn btn-danger form-control"

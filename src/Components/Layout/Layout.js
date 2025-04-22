@@ -8,7 +8,6 @@ function Layout() {
         alert("Đăng xuất thành công!");
         navigate('/');
         window.location.reload();
-
     }
     return (
         <div>
