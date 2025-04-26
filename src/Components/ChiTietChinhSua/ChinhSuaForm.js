@@ -6,6 +6,7 @@ function ChinhSuaForm() {
     const navigate = useNavigate();
     const location = useLocation();
     const { btcs } = location.state || {};
+    const id = btcs.IDBaithi;
     const [tenbt, setTenbt] = useState(btcs.Tenbaithi);
     const [quan, setQuan] = useState(btcs.Soluongcau);
     const [opt, setOpt] = useState(btcs.IDTheloai);
@@ -45,10 +46,26 @@ function ChinhSuaForm() {
             [name]: checked ? 1 : 0
         }));
     }
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try{
+            const formdata = new FormData();
+            formdata.append('Tenbaithi', tenbt);
+            formdata.append('Soluongcau', quan);
+            formdata.append('Congkhai', states.congkhai);
+            formdata.append('Lamlai', states.lamlai);
+            formdata.append('IDTheloai', opt);
+            await connection.put(`/Chinhsua/${id}`, formdata);
+            navigate('/Dethi');
+        }
+        catch{
+            alert('Lỗi chỉnh sửa!');
+        }
+    }
     return (
         <div style={{ textAlign:'justify', fontSize:'large' }}>
             <h1>Chỉnh sửa thông tin đề thi</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label>Tên bài thi</label>
                 <input type="text" value={tenbt} className="form-control" onChange={handleName} style={{ fontSize:'large' }} /><br />
                 <label>Số lượng câu</label>
@@ -72,7 +89,7 @@ function ChinhSuaForm() {
                         ))
                     }
                 </select><br />
-
+                <button>Xác nhận chỉnh sửa</button>
             </form>
         </div>
     )
