@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import connection from '../Api/ApiService';
 import './TimKiem.css';
+import { useNavigate } from 'react-router-dom';
 function TimKiem() {
     const [name, setName] = useState('');
     const [ketqua, setKetqua] = useState([]);
-
+    const navigate = useNavigate();
     useEffect(() => {
         if (!name.trim()) {
             setKetqua([]);  // Nếu không có từ khóa thì không tìm kiếm
@@ -32,6 +33,9 @@ function TimKiem() {
 
     const handleChange = (e) => {
         setName(e.target.value)
+    }
+    const handleClick = (id) => {
+        navigate('/Chitietbaithi', { state: { id } });
     }
     return (
         <div style={{ height: '100%', width: '100%' }}>
@@ -68,9 +72,10 @@ function TimKiem() {
                                 paddingLeft:'20px', paddingRight:'20px', height:'100%', overflowY:'auto', overflowX:'hidden' }}>
                                 {
                                     (ketqua.length > 0) ?
-                                        ketqua.map((item) => {
+                                        ketqua.map((item, index) => {
                                             return (
-                                                <button key={item.IDBaithi}
+                                                <button key={index}
+                                                    onClick={() => handleClick(item.IDBaithi)}
                                                     style={{
                                                         width: '100%',
                                                         textAlign: 'justify',
