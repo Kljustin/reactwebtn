@@ -6,6 +6,7 @@ function ChiTiet() {
     const location = useLocation();
     const { bthi } = location.state || {};
     const baithi = bthi.Baithi;
+    const id = baithi.idbaithi;
     const chitiet = bthi.Chitiet;
     const navigate = useNavigate();
     const [showmess, setShowmess] = useState(false);
@@ -33,6 +34,29 @@ function ChiTiet() {
         }
         catch{
             alert('Bài thi không tồn tại!');
+        }
+    }
+    const handleXoaCH = async (e)=>{
+        try{
+            await connection.delete(`/Xoacauhoi/${e}`);
+            const response = await connection.get(`/Chitietchinhsua/${id}`);
+            const bthi = response.data;
+            navigate('/Chinhsua', {state : {bthi}});
+            return;
+        }
+        catch{
+            alert('Lỗi không thể xóa!');
+            return;
+        }
+    }
+    const handleCT = async (e) =>{
+        try{
+            const response = await connection.get(`/Cauhoichitiet/${e}`);
+            const ch = response.data;
+            navigate('/Chitietcauhoi', {state:{ch}});
+        }
+        catch{
+            alert('Lỗi không tồn tại dữ liệu!');
         }
     }
     return (
@@ -128,8 +152,8 @@ function ChiTiet() {
                             <tr key={index}>
                                 <td style={{ alignContent: 'center' }}>{item.noidung}</td>
                                 <td style={{ alignContent: 'center', textAlign: 'center' }}>
-                                    <button className="btn btn-danger">Xóa</button><br />
-                                    <button className="btn btn-warning">Chi tiết</button>
+                                    <button className="btn btn-danger" onClick={()=>handleXoaCH(item.idcauhoi)}>Xóa</button><br />
+                                    <button className="btn btn-warning" onClick={()=>handleCT(item.idcauhoi)}>Chi tiết</button>
                                 </td>
                             </tr>
                         ))

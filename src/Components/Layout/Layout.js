@@ -5,8 +5,8 @@ function Layout() {
     const navigate = useNavigate();
     const handleDX = () => {
         sessionStorage.clear();
-        alert("Đăng xuất thành công!");
         navigate('/');
+        alert("Đăng xuất thành công!");
         window.location.reload();
     }
     return (

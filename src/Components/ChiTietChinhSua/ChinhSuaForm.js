@@ -89,7 +89,7 @@ function ChinhSuaForm() {
                         ))
                     }
                 </select><br />
-                <button>Xác nhận chỉnh sửa</button>
+                <button className="btn btn-success form-control" style={{ fontSize:'large' }}>Xác nhận chỉnh sửa</button>
             </form>
         </div>
     )
